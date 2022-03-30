@@ -1,7 +1,6 @@
 import tw from "twin.macro";
 import { ClinicContact } from "./ClinicContact";
 import { Map } from "../components/Map/Map";
-import { mapStyles } from "./Map/mapStyles";
 
 interface ClinicLocation {
   address: string;

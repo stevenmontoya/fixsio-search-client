@@ -1,6 +1,4 @@
-import { Clinic, useClinics } from "../lib/useClinics";
 import { LocalCard } from "./LocalCard";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export interface Clinics {
