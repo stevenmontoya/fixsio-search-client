@@ -17,9 +17,6 @@ export const useClinics = (lat, lng) => {
   const [loading, setLoading] = useState(true);
   const [clinics, setClinics] = useState([]);
 
-  console.log("----->>> ", process.env.NEXT_PUBLIC_API_URL)
-  console.log("----->>> ", process.env.NEXT_PUBLIC_GOOGLE_API_KEY)
-
   const getPlacesData = () => {
     const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/clinics`;
     
