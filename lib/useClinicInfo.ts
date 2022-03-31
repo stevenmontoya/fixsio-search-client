@@ -18,7 +18,7 @@ export const useClinicInfo = (id) => {
     if (id) {
       getClinicInfo();
     }
-  }, []);
+  }, [id]);
 
   return { loading, clinicInfo };
 };

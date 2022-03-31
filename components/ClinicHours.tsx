@@ -11,8 +11,10 @@ export const ClinicHours: React.FC<{ times: string[] }> = ({ times }) => {
       <h2 tw="text-3xl font-semibold my-5">Horario</h2>
 
       <ul>
-        {spanishOpeningHours.map((time) => (
-          <li tw="text-base text-gray-500">{time}</li>
+        {spanishOpeningHours.map((time, index) => (
+          <li key={index} tw="text-base text-gray-500">
+            {time}
+          </li>
         ))}
       </ul>
     </>

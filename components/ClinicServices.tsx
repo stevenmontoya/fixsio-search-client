@@ -9,8 +9,10 @@ export const ClinicServices = () => {
       <h2 tw="text-3xl font-semibold my-5">Terapias</h2>
 
       <ul>
-        {services.map((service) => (
-          <li tw="text-base text-gray-500">{service.name}</li>
+        {services.map((service, index) => (
+          <li key={index} tw="text-base text-gray-500">
+            {service.name}
+          </li>
         ))}
       </ul>
     </>

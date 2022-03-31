@@ -14,6 +14,9 @@ export const client_detail: React.FC = () => {
   } = router;
   const { loading, clinicInfo } = useClinicInfo(id);
 
+  console.log("---->>> ", id);
+  console.log("---->>> ", loading);
+  console.log("---->>> ", clinicInfo);
 
   return (
     <>
