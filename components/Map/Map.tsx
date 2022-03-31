@@ -60,8 +60,8 @@ export const Map: React.FC<MapPlaces> = ({
         zoom={15}
         options={options}
       >
-        {clinics.map((clinic) => (
-          <Marker position={clinic.position} />
+        {clinics.map((clinic, index) => (
+          <Marker key={index} position={clinic.position} />
         ))}
       </GoogleMap>
     );

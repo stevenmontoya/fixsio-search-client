@@ -13,11 +13,18 @@ const index_map = () => {
   } = router;
 
   const [coord, setCoordinates] = useState({ lat, lng });
-  const { loading, clinics } = useClinics(coord.lat, coord.lng);
-  const mapPlaces: MapPlaces = { lat: coord.lat, lng: coord.lng, clinics };
-  
+  const { loading, clinics } = useClinics(coord.lat || lat, coord.lng || lng);
+  const mapPlaces: MapPlaces = {
+    lat: coord.lat || lat,
+    lng: coord.lng || lng,
+    clinics,
+  };
+
   const setPlace = (lat, lng) => {
-    setCoordinates({ lat: lat?.toString(), lng: lng?.toString() });
+    setCoordinates({
+      lat: lat?.toString() || lat,
+      lng: lng?.toString() || lng,
+    });
   };
 
   return (
