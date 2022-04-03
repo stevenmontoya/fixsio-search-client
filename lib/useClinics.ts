@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { coordsAtom } from "../recoil/atom/coordsAtom";
+import { clinicsAtom } from "../recoil/atom/clinicsAtom";
 
 export interface Clinic {
   id: string;
@@ -15,14 +18,28 @@ export interface Clinic {
 
 export const useClinics = (lat, lng) => {
   const [loading, setLoading] = useState(true);
-  const [clinics, setClinics] = useState([]);
+  const [, setCoords] = useRecoilState(coordsAtom)
+  const coords = useRecoilValue(coordsAtom)
+  const  [, setClinics] = useRecoilState(clinicsAtom)
+  const clinics = useRecoilValue(clinicsAtom)
+
+  const isEqualCoords = (lat, lng) => {
+    return (lat === coords.lat) && (lng === coords.lng)
+  }
 
   const getPlacesData = () => {
     const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/clinics`;
+
+ 
+    if (isEqualCoords(lat, lng)) {
+      setLoading(false);
+      return clinics
+    }
     
     axios.post(baseUrl, { lat, lng }).then((res) => {
       setLoading(false);
       setClinics(res.data);
+      setCoords({lat, lng});
     });
   };
 
