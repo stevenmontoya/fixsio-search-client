@@ -16,14 +16,7 @@ export const Input = ({ placeholder, text, isExtended, placeSelected }) => {
     }
   };
 
-  useEffect(() => {
-    if (position) {
-      setAllowedLocation(false);
-      placeSelected(position.lat, position.lng);
-    }
-  }, [position]);
-
-  const Wrapper = (children) => {
+  const ResponseiveWrapper = (children) => {
     return isExtended ? (
       <div tw="container mx-auto w-4/12 mb-10">{children}</div>
     ) : (
@@ -31,16 +24,23 @@ export const Input = ({ placeholder, text, isExtended, placeSelected }) => {
     );
   };
 
+  useEffect(() => {
+    if (position) {
+      setAllowedLocation(false);
+      placeSelected(position.lat, position.lng);
+    }
+  }, [position]);
+
   return (
     <>
-      {Wrapper(
+      {ResponseiveWrapper(
         <div tw="rounded-lg bg-white shadow flex w-full h-14">
           <Autocomplete
             apiKey={GOOGLE_API_KEY}
             onPlaceSelected={(place) =>
               placeSelected(
-                place.geometry.location.lat(),
-                place.geometry.location.lng()
+                place?.geometry?.location.lat(),
+                place?.geometry?.location.lng()
               )
             }
             language="es"
