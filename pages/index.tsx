@@ -9,6 +9,10 @@ const index_page = () => {
   const router = useRouter();
 
   const placeSelected = (lat, lng) => {
+    if (!lat || !lng) {
+      return alert("Debe Seleccionar una dirección");
+    }
+
     router.push({
       pathname: "/clinics",
       query: { lat, lng },
