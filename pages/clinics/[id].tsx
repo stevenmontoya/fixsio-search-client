@@ -6,6 +6,7 @@ import { ClinicHours } from "../../components/ClinicHours";
 import { ClinicInfo } from "../../components/ClinicInfo";
 import { ClinicLocation } from "../../components/ClinicLocation";
 import { useClinicInfo } from "../../lib/useClinicInfo";
+import { ClinicContact } from "../../components/ClinicContact";
 
 export const client_detail: React.FC = () => {
   const router = useRouter();
@@ -25,10 +26,13 @@ export const client_detail: React.FC = () => {
                 <ClinicServices />
                 <ClinicHours times={clinicInfo.openingHours} />
               </div>
-              <ClinicLocation
-                address={clinicInfo.address}
-                clinic={clinicInfo}
-              />
+              <div>
+                <ClinicLocation
+                  address={clinicInfo.address}
+                  clinic={clinicInfo}
+                />
+                <ClinicContact phone={clinicInfo?.phone} />
+              </div>
             </div>
             <ClinicInfo {...clinicInfo} />
           </section>
