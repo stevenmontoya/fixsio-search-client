@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { coordsAtom } from "../recoil/atom/coordsAtom";
 
 export interface Location {
   position: { lat: string; lng: string };
@@ -6,7 +8,9 @@ export interface Location {
 }
 
 export const useGeolocation = (control): Location => {
-  const [position, setCoords] = useState(null);
+  const [position] = useState(null);
+  const [, setCoords] = useRecoilState(coordsAtom)
+
   const [isLocationLoading, setLoading] = useState(true);
 
   if (!control) {
