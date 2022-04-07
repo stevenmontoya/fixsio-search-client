@@ -1,5 +1,4 @@
 import tw from "twin.macro";
-import { ClinicContact } from "./ClinicContact";
 import { Map } from "../components/Map/Map";
 
 interface ClinicLocation {
@@ -23,7 +22,6 @@ export const ClinicLocation: React.FC<ClinicLocation> = ({
         clinics={[clinic]}
         isInfo={true}
       />
-      <ClinicContact />
     </div>
   );
 };
