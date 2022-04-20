@@ -18,6 +18,10 @@ export default class MyDocument extends Document {
             data-emotion-css={ids.join(" ")}
             dangerouslySetInnerHTML={{ __html: css }}
           />
+          <script
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&callback=initMap&libraries=places,drawing,visualization&v=weekly`}
+            async
+          ></script>
         </Head>
         <body>
           <Main />

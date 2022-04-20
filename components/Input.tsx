@@ -6,7 +6,6 @@ import { useGeolocation } from "../lib/useGeolocation";
 export const Input = ({ placeholder, text, isExtended, placeSelected }) => {
   const [alloweLocation, setAllowedLocation] = useState(false);
   const { position, isLocationLoading } = useGeolocation(alloweLocation);
-  const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -36,7 +35,6 @@ export const Input = ({ placeholder, text, isExtended, placeSelected }) => {
       {ResponseiveWrapper(
         <div tw="rounded-lg bg-white shadow flex w-full h-14">
           <Autocomplete
-            apiKey={GOOGLE_API_KEY}
             onPlaceSelected={(place) =>
               placeSelected(
                 place?.geometry?.location.lat(),

@@ -31,10 +31,6 @@ export const Map: React.FC<MapPlaces> = ({
   clinics,
   isInfo = false,
 }) => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-  });
-
   const normalizeCoordinate = (coordinate) => {
     return typeof lat === "string" ? parseFloat(coordinate.valueOf()) : 0;
   };
@@ -67,8 +63,5 @@ export const Map: React.FC<MapPlaces> = ({
     );
   };
 
-  if (loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>;
-  }
-  return isLoaded ? renderMap() : <div>cargando</div>;
+  return renderMap();
 };
